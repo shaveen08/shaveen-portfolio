@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "UTS Train Booking App",
+    "desc": "Improving ticket booking flow for daily commuters",
+    "date": "Nov 2025",
+    "tags": ["User Research", "Redesign", "UI Design", "Mobile App"],
+    "img": "https://framerusercontent.com/images/ROUFYKfgBYcd9tymoNPKoUyJti4.jpg?width=800",
+    "demo": "https://shaveenkumar.framer.website/uts-redesign-casestudy"
+  },
+  {
+    "id": 2,
+    "title": "PureFlow",
+    "desc": "A platform that combines service and ecommerce",
+    "date": "Nov 2025",
+    "tags": ["User Research", "UI Design", "WebApp"],
+    "img": "https://framerusercontent.com/images/2J0oqXGiRmwqo5EBvR6PZJcugJE.jpg?width=800",
+    "demo": "https://shaveenkumar.framer.website/pureflow-ro-casestudy"
+  },
+  {
+    "id": 3,
+    "title": "Clothing Web Store",
+    "desc": "Clothing e-commerce web application",
+    "date": "Jun 2025",
+    "tags": ["E-commerce", "UI Design", "WebApp"],
+    "img": "https://framerusercontent.com/images/fqqIkY1m4uvWSjj0KtjWiNBPDh4.png?width=800",
+    "demo": "https://www.behance.net/gallery/232106875/Fashion-Clothing-Store-Visual-Design"
+  },
+  {
+    "id": 4,
+    "title": "Doctor Appointment Web App",
+    "desc": "Landing page for doctor appointment booking.",
+    "date": "Dec 2025",
+    "tags": ["Landing page", "UI Design", "WebApp"],
+    "img": "https://framerusercontent.com/images/CIGXCs1pUk21wA7G0lS1oUp0.png?width=800",
+    "demo": "https://www.behance.net/gallery/216634079/Skin-Specialist-Landing-Page-User-Interface-Design"
+  }
+]

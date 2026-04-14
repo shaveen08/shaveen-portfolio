@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Chat App",
+    "desc": "Full-featured responsive chat app frontend with chatting and searching user option",
+    "date": "Jan 2026",
+    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive", "Web API"],
+    "img": "src/assets/img/posters/chat-app.jpg",
+    "link": "https://github.com/shaveen08/Chat-bot",
+    "demo": "https://shaveen08.github.io/Chat-bot/"
+  },
+  {
+    "id": 2,
+    "title": "Harry Potter API",
+    "desc": "Real-time restful API app using the Harry Potter student API with dynamic rendering and search filtering",
+    "date": "Dec 2025",
+    "tags": ["HTML5", "CSS3", "JavaScript", "API Integration", "Responsive"],
+    "img": "src/assets/img/posters/harry-potter-api.jpg",
+    "link": "https://github.com/shaveen08/Harry-Potter-Student-API",
+    "demo": "https://shaveen08.github.io/Harry-Potter-Student-API/"
+  },
+  {
+    "id": 3,
+    "title": "Apple Landing Page Clone",
+    "desc": "Responsive design with modern web technologies",
+    "date": "Nov 2025",
+    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive"],
+    "img": "src/assets/img/posters/apple-landingpage-clone.jpg",
+    "link": "https://shaveen08.github.io/Apple_homepage_clone/",
+    "demo": "https://shaveen08.github.io/Apple_homepage_clone/"
+  },
+  {
+    "id": 4,
+    "title": "Calculator",
+    "desc": "Fully functional JavaScript calculator with clean UI, keyboard support, and chained operations",
+    "date": "Oct 2025",
+    "tags": ["HTML5", "CSS3", "JavaScript"],
+    "img": "src/assets/img/posters/calculator.jpg",
+    "link": "https://github.com/shaveen08",
+    "demo": "https://github.com/shaveen08"
+  }
+]

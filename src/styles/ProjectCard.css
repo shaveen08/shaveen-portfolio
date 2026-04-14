@@ -1,0 +1,123 @@
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background-color: var(--bg-card);
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  background-color: var(--bg-card);
+  border: 1px solid var( --bg-card-hover);
+  transform: scale(1.02);
+}
+
+.project-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background:#00000080;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+/* Show on hover */
+.project-banner:hover .overlay {
+  opacity: 1;
+}
+
+.project-actions {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.project-actions a{
+  padding: 8px;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  height: 42px;
+  width: 100%;
+}
+
+.project-banner .btn.link {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background-color: #f6590533;
+  opacity: 1;
+}
+
+.project-banner .btn.link:hover {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background-color: var(--cta-link);
+  opacity: 1;
+}
+
+/* Project card body ------------------------------ */
+.project-card-body{
+  padding: 8px 12px 12px 12px ;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-image {
+  width: 100%;
+}
+
+.project-header{
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.project-subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.project-date {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.project-tag {
+  background: var(--tag);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+

@@ -1,18 +1,7 @@
 import React from "react";
 import "../styles/ProjectCard.css";
 
-import chatappBanner from "/assets/thumbnail/chat-app.jpg";
-import harryPotterBanner from "/assets/thumbnail/harry-potter-api.jpg";
-import appleLandingPageBanner from "/assets/thumbnail/apple-landingpage-clone.jpg";
-import calculatorBanner from "/assets/thumbnail/calculator.jpg";
-
 const ProjectComponent = ({ project }) => {
-  const projectImg = [
-    {title: "Chat App", thumbnail: chatappBanner },
-    {title: "Harry Potter API", thumbnail: harryPotterBanner},
-    {title: "Apple Landing Page Clone", thumbnail: appleLandingPageBanner },
-    {title: "Calculator", thumbnail: calculatorBanner },
-  ]
   return (
     <div className="project-card">
       {/* Thumbnail */}

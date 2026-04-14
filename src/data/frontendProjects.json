@@ -35,7 +35,7 @@
     "desc": "Fully functional JavaScript calculator with clean UI, keyboard support, and chained operations",
     "date": "Oct 2025",
     "tags": ["HTML5", "CSS3", "JavaScript"],
-    "img": "/assests/thumbnail/calculator.jpg",
+    "img": "/assets/thumbnail/calculator.jpg",
     "link": "https://github.com/shaveen08",
     "demo": "https://github.com/shaveen08"
   }

@@ -5,7 +5,7 @@
     "desc": "Full-featured responsive chat app frontend with chatting and searching user option",
     "date": "Jan 2026",
     "tags": ["HTML5", "CSS3", "JavaScript", "Responsive", "Web API"],
-    "img": "/assests/thumbnail/chat-app.jpg",
+    "img": "/assets/thumbnail/chat-app.jpg",
     "link": "https://github.com/shaveen08/Chat-bot",
     "demo": "https://shaveen08.github.io/Chat-bot/"
   },
@@ -15,7 +15,7 @@
     "desc": "Real-time restful API app using the Harry Potter student API with dynamic rendering and search filtering",
     "date": "Dec 2025",
     "tags": ["HTML5", "CSS3", "JavaScript", "API Integration", "Responsive"],
-    "img": "/assests/thumbnail/harry-potter-api.jpg",
+    "img": "/assets/thumbnail/harry-potter-api.jpg",
     "link": "https://github.com/shaveen08/Harry-Potter-Student-API",
     "demo": "https://shaveen08.github.io/Harry-Potter-Student-API/"
   },
@@ -25,7 +25,7 @@
     "desc": "Responsive design with modern web technologies",
     "date": "Nov 2025",
     "tags": ["HTML5", "CSS3", "JavaScript", "Responsive"],
-    "img": "/assests/thumbnail/apple-landingpage-clone.jpg",
+    "img": "/assets/thumbnail/apple-landingpage-clone.jpg",
     "link": "https://shaveen08.github.io/Apple_homepage_clone/",
     "demo": "https://shaveen08.github.io/Apple_homepage_clone/"
   },

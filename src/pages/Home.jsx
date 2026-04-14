@@ -26,6 +26,7 @@ import {
   GithubIcon,
   Moon02Icon,
   Sun01Icon,
+  Behance01Icon,
 } from "@hugeicons/core-free-icons";
 import { useEffect, useState } from "react";
 
@@ -63,8 +64,14 @@ const contactItems = [
   {
     icon: <HugeiconsIcon icon={GithubIcon} color="#ea580c" size={20} />,
     title: "GitHub",
-    info: "github.com/shaveen08",
+    info: "https://github.com/shaveen08",
     href: "https://github.com/shaveen08",
+  },
+  {
+    icon: <HugeiconsIcon icon={Behance01Icon} color="#ea580c" size={20} />,
+    title: "GitHub",
+    info: "https://www.behance.net/shaveenkumar4",
+    href: "https://www.behance.net/shaveenkumar4",
   },
 ];
 

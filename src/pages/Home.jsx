@@ -213,9 +213,9 @@ const Home = () => {
             <button className="btn primary" onClick={() => scrollTo("contact")}>
               Hire Me <HugeiconsIcon icon={Mailbox01Icon} size={18} />
             </button>
-            <button className="btn secondary" onClick={handleDownload}>
+            <a className="btn secondary" href="/resume/ShaveenKumar_CV.pdf" download="ShaveenKumar_CV.pdf" target="_blank">
               Download CV <HugeiconsIcon icon={Download01Icon} size={18} />
-            </button>
+            </a>
           </div>
         </div>
 

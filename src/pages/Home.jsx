@@ -69,7 +69,7 @@ const contactItems = [
   },
   {
     icon: <HugeiconsIcon icon={Behance01Icon} color="#ea580c" size={20} />,
-    title: "GitHub",
+    title: "Behance",
     info: "https://www.behance.net/shaveenkumar4",
     href: "https://www.behance.net/shaveenkumar4",
   },
@@ -87,7 +87,7 @@ const timelineItems = [
     emoji: "💼",
     title: "UI/UX Designer — ThirdI Technologies Pvt. Ltd.",
     sub: "Designed web & mobile interfaces, conducted user research, and built wireframes and prototypes in Figma.",
-    date: "2023 – Present",
+    date: "2024 – 2025",
   },
   {
     emoji: "🎓",

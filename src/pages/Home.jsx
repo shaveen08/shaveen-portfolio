@@ -170,6 +170,10 @@ const Home = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
+  const handleDownload = () => {
+    window.location.href = "/resume/ShaveenKumar_CV.pdf";
+  }
+
   return (
     <div className="home-container">
 
@@ -209,7 +213,7 @@ const Home = () => {
             <button className="btn primary" onClick={() => scrollTo("contact")}>
               Hire Me <HugeiconsIcon icon={Mailbox01Icon} size={18} />
             </button>
-            <button className="btn secondary">
+            <button className="btn secondary" onClick={handleDownload}>
               Download CV <HugeiconsIcon icon={Download01Icon} size={18} />
             </button>
           </div>

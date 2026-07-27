@@ -5,13 +5,16 @@ import ProjectComponent from "../components/ProjectDevCard";
 
 import uiuxProjects from "../data/uiuxProjects.json";
 import frontendProjects from "../data/frontendProjects.json";
-import shaveenProfile from "../assets/img/profile-picture.png";
+import shaveenProfile from "../assets/img/MyPicture.png";
 import { HugeiconsIcon } from "@hugeicons/react";
 
 import htmlIcon from "../assets/icons/html-icon.svg";
 import cssIcon from "../assets/icons/css-icon.svg";
 import javaScriptIcon from "../assets/icons/javascipt-icon.svg";
 import reactIcon from "../assets/icons/react-icon.svg";
+import nodeIcon from "../assets/icons/nodejs.svg";
+import expressIcon from "../assets/icons/Express.svg";
+import mongoDBIcon from "../assets/icons/MongoDB.svg";
 import figmaIcon from "../assets/icons/figma-icon.svg";
 import photoshopIcon from "../assets/icons/photoshop-icon.svg";
 import illustratorIcon from "../assets/icons/illustrator-icon.svg";
@@ -37,6 +40,9 @@ const skillIcons = [
   { src: cssIcon, label: "CSS" },
   { src: javaScriptIcon, label: "JavaScript" },
   { src: reactIcon, label: "React" },
+  { src: nodeIcon, label: "Node" },
+  { src: expressIcon, label: "Express" },
+  { src: mongoDBIcon, label: "MongoDB" },
   { src: figmaIcon, label: "Figma" },
   { src: photoshopIcon, label: "Photoshop" },
   { src: illustratorIcon, label: "Illustrator" },
@@ -46,8 +52,8 @@ const contactItems = [
   {
     icon: <HugeiconsIcon icon={Email} color="#ea580c" size={20} />,
     title: "Email",
-    info: "shaveen9384@gmail.com",
-    href: "mailto:shaveen9384@gmail.com",
+    info: "shaveenkumarpalani@gmail.com",
+    href: "mailto:shaveenkumarpalani@gmail.com",
   },
   {
     icon: <HugeiconsIcon icon={CallIcon} color="#ea580c" size={20} />,
@@ -109,6 +115,10 @@ const skillBlocks = [
     pills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React", "REST APIs", "Fetch API"],
   },
   {
+    category: "Backend",
+    pills: ["Node.js", "Express.js", "MongoDB", "Mongoose"],
+  },
+  {
     category: "Design",
     pills: ["Figma", "Photoshop", "Illustrator", "Wireframing", "Prototyping"],
   },
@@ -119,10 +129,6 @@ const skillBlocks = [
   {
     category: "Dev Tools",
     pills: ["Git & GitHub", "GitHub Pages", "VS Code", "npm"],
-  },
-  {
-    category: "Currently Learning",
-    pills: ["Node.js", "MongoDB", "Express.js", "MERN Stack"],
   },
   {
     category: "Soft Skills",
@@ -151,14 +157,17 @@ const Home = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scroll to top button action
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // GMAIL - Form data handle change
   const handleFormChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // GMAIL - Form data submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, message } = formData;
@@ -170,8 +179,9 @@ const Home = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
+  // Resume download
   const handleDownload = () => {
-    window.location.href = "/resume/ShaveenKumar_CV.pdf";
+    window.location.href = "/resume/ShaveenKumar_MERN_Developer_Resume.pdf";
   }
 
   return (
@@ -191,7 +201,7 @@ const Home = () => {
               Hi, I'm Shaveen —{" "}
               <span className="highlight">UI/UX Designer</span>
               {" & "}
-              <span className="highlight">Frontend Dev</span>
+              <span className="highlight">MERN Stack Dev</span>
             </h1>
             <p className="desc">
               1+ year crafting user-centred web &amp; mobile interfaces — from wireframes to
@@ -213,7 +223,7 @@ const Home = () => {
             <button className="btn primary" onClick={() => scrollTo("contact")}>
               Hire Me <HugeiconsIcon icon={Mailbox01Icon} size={18} />
             </button>
-            <a className="btn secondary" href="/resume/ShaveenKumar_CV.pdf" download="ShaveenKumar_CV.pdf" target="_blank">
+            <a className="btn secondary" href="/resume/ShaveenKumar_MERN_Developer_Resume.pdf" download="ShaveenKumar_MERN_Developer_Resume.pdf" target="_blank">
               Download CV <HugeiconsIcon icon={Download01Icon} size={18} />
             </a>
           </div>
@@ -289,10 +299,10 @@ const Home = () => {
             UI/UX Design Projects
           </div>
           <div
-            className={`tab ${activeTab === "frontend" ? "active" : ""}`}
-            onClick={() => setActiveTab("frontend")}
+            className={`tab ${activeTab === "mern" ? "active" : ""}`}
+            onClick={() => setActiveTab("mern")}
           >
-            Frontend Projects
+            MERN Projects
           </div>
         </section>
 
@@ -304,7 +314,7 @@ const Home = () => {
           </div>
         )}
 
-        {activeTab === "frontend" && (
+        {activeTab === "mern" && (
           <div className="project-grid">
             {frontendProjects.map((project) => (
               <ProjectComponent key={project.id} project={project} />

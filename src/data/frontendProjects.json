@@ -1,32 +1,80 @@
 [
   {
     "id": 1,
+    "title": "CRM System",
+    "desc": "A full-stack Customer Relationship Management (CRM) system with authentication, role-based access control, lead management, dashboards, and REST APIs.",
+    "date": "July 2026",
+    "tags": [
+      "React.js",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "REST API",
+      "JWT",
+      "RBAC",
+      "CRUD"
+    ],
+    "img": "/assets/thumbnail/crm-system-thumbnail.jpg",
+    "link": "https://github.com/shaveen08/CRM-System-Client"
+  },
+  {
+    "id": 2,
+    "title": "Appointment Management System",
+    "desc": "A full-stack appointment booking and management system featuring authentication, appointment scheduling, dashboards, and CRUD operations.",
+    "date": "June 2026",
+    "tags": [
+      "React.js",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "REST API",
+      "JWT",
+      "CRUD"
+    ],
+    "img": "/assets/thumbnail/ams-thumbnail.jpg",
+    "link": "https://github.com/shaveen08/Appointment-Management"
+  },
+  {
+    "id": 3,
     "title": "Chat App",
-    "desc": "Full-featured responsive chat app frontend with chatting and searching user option",
-    "date": "Jan 2026",
-    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive", "Web API"],
+    "desc": "Responsive chat application frontend with real-time styled UI, user search, conversation list, and modern messaging interface.",
+    "date": "January 2026",
+    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
     "img": "/assets/thumbnail/chat-app.jpg",
     "link": "https://github.com/shaveen08/Chat-bot",
     "demo": "https://shaveen08.github.io/Chat-bot/"
   },
   {
-    "id": 2,
-    "title": "Harry Potter API",
-    "desc": "Real-time restful API app using the Harry Potter student API with dynamic rendering and search filtering",
-    "date": "Dec 2025",
-    "tags": ["HTML5", "CSS3", "JavaScript", "API Integration", "Responsive"],
+    "id": 4,
+    "title": "Harry Potter Student API",
+    "desc": "A responsive web application that fetches and displays Harry Potter student data using a REST API with dynamic search and filtering.",
+    "date": "December 2025",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "REST API",
+      "Fetch API",
+      "Responsive Design"
+    ],
     "img": "/assets/thumbnail/harry-potter-api.jpg",
     "link": "https://github.com/shaveen08/Harry-Potter-Student-API",
     "demo": "https://shaveen08.github.io/Harry-Potter-Student-API/"
   },
   {
-    "id": 3,
+    "id": 5,
     "title": "Apple Landing Page Clone",
-    "desc": "Responsive design with modern web technologies",
-    "date": "Nov 2025",
-    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive"],
+    "desc": "A pixel-perfect responsive clone of Apple's homepage built using HTML, CSS, and JavaScript with modern layouts and animations.",
+    "date": "November 2025",
+    "tags": ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Animations"],
     "img": "/assets/thumbnail/apple-landingpage-clone.jpg",
-    "link": "https://shaveen08.github.io/Apple_homepage_clone/",
+    "link": "https://github.com/shaveen08/Apple_homepage_clone",
     "demo": "https://shaveen08.github.io/Apple_homepage_clone/"
   }
 ]

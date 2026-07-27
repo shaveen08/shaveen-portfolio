@@ -2,45 +2,47 @@
 
 :root,
 [data-theme="light"] {
-  --bg:             #ffffff;
-  --bg-card:        #f9f9f9;
-  --text-primary:   #111111;
+  --bg: #ffffff;
+  --bg-card: #f9f9f9;
+  --text-primary: #111111;
   --text-secondary: #555555;
-  --text-muted:     #999999;
-  --text-white:     #ffffff;
-  --border:         #e5e5e5;
-  --tag:            #f0f0f0;
-  --accent:         #ea580c;
-  --accent-hover:   #c2410c;
-  --accent-dim:     #ea580c14;
-  --cta-link:       #fffaf7;
-  --radius-card:    16px;
-  --radius-btn:     100px;
-  --transition:     0.2s ease;
+  --text-muted: #999999;
+  --text-white: #ffffff;
+  --border: #e5e5e5;
+  --tag: #f0f0f0;
+  --accent: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-dim: #ea580c14;
+  --cta-link: #fffaf7;
+  --radius-card: 16px;
+  --radius-btn: 100px;
+  --transition: 0.2s ease;
 }
 
 [data-theme="dark"] {
-  --bg:             #0f0f0f;
-  --bg-card:        #1a1a1a;
-  --text-primary:   #f0f0f0;
+  --bg: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --text-primary: #f0f0f0;
   --text-secondary: #aaaaaa;
-  --text-muted:     #666666;
-  --text-white:     #ffffff;
-  --border:         #2a2a2a;
-  --tag:            #2a2a2a;
-  --accent:         #f97316;
-  --accent-hover:   #ea580c;
-  --accent-dim:     #f9731618;
-  --cta-link:       #3d1602;
-  --radius-card:    16px;
-  --radius-btn:     100px;
-  --transition:     0.2s ease;
+  --text-muted: #666666;
+  --text-white: #ffffff;
+  --border: #2a2a2a;
+  --tag: #2a2a2a;
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+  --accent-dim: #f9731618;
+  --cta-link: #3d1602;
+  --radius-card: 16px;
+  --radius-btn: 100px;
+  --transition: 0.2s ease;
 }
 
 body {
   background: var(--bg);
   color: var(--text-primary);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 /* ── LAYOUT ─────────────────────────────────────────────────────────────────── */
@@ -91,7 +93,10 @@ body {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
 }
 
 .theme-toggle-float:hover {
@@ -111,14 +116,20 @@ body {
   overflow: hidden;
   position: relative;
   gap: 32px;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .profile-header::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 55% 75% at 5% 100%, #ea580c14, transparent 65%);
+  background: radial-gradient(
+    ellipse 55% 75% at 5% 100%,
+    #ea580c14,
+    transparent 65%
+  );
   pointer-events: none;
 }
 
@@ -145,8 +156,15 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(1.4); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.4);
+  }
 }
 
 .profile-content {
@@ -154,7 +172,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 680px;
+  max-width: 720px;
   position: relative;
   z-index: 1;
 }
@@ -193,7 +211,9 @@ body {
   justify-content: center;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  transition: border-color var(--transition), transform var(--transition);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .icon-frame:hover {
@@ -202,8 +222,10 @@ body {
 }
 
 .icon-frame img {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
+  max-height: 36px;
+  max-width: 36px;
   object-fit: contain;
 }
 
@@ -224,7 +246,10 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background var(--transition), box-shadow var(--transition), transform 0.2s;
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    transform 0.2s;
   cursor: pointer;
   border: none;
 }
@@ -300,7 +325,9 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   padding: 20px;
-  transition: border-color var(--transition), transform var(--transition);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .stat-card:hover {
@@ -337,7 +364,9 @@ body {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
-  transition: border-color var(--transition), transform var(--transition);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .timeline-item:hover {
@@ -449,7 +478,9 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   padding: 20px;
-  transition: border-color var(--transition), transform var(--transition);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .skill-block:hover {
@@ -479,7 +510,9 @@ body {
   border-radius: 100px;
   background: var(--tag);
   color: var(--text-secondary);
-  transition: background var(--transition), color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition);
   cursor: default;
 }
 
@@ -519,7 +552,9 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px 14px;
-  transition: border-color var(--transition), transform var(--transition);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .contact-info:hover {
@@ -612,7 +647,10 @@ body {
   color: var(--text-primary);
   background: var(--bg-card);
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition), background 0.3s ease;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background 0.3s ease;
 }
 
 .input-group textarea {
@@ -643,7 +681,10 @@ body {
   margin-top: 8px;
   border: none;
   cursor: pointer;
-  transition: background var(--transition), box-shadow var(--transition), transform 0.2s;
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    transform 0.2s;
 }
 
 .submit-btn button:hover {
@@ -674,7 +715,9 @@ body {
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
 }
 
 .back-top-btn.visible {

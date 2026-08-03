@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+/*
+  Tailwind v4 has no tailwind.config.js — theme tokens are registered here
+  via @theme, which is what turns them into utility classes (bg-bg,
+  text-accent, rounded-card, animate-pulse-dot, etc).
+*/
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-card: var(--bg-card);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-white: var(--text-white);
+  --color-border: var(--border);
+  --color-tag: var(--tag);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dim: var(--accent-dim);
+  --color-cta-link: var(--cta-link);
+
+  --radius-card: 16px;
+  --radius-btn: 100px;
+
+  --font-sans: "Space Grotesk", sans-serif;
+
+  --animate-pulse-dot: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.4);
+  }
+}
+
+/*
+  The actual color values still live in plain CSS variables (not @theme),
+  because these are the ones that swap when data-theme flips — @theme's
+  --color-bg above just points at var(--bg) so Tailwind utilities pick up
+  whichever value is active.
+*/
+:root,
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-card: #f9f9f9;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #999999;
+  --text-white: #ffffff;
+  --border: #e5e5e5;
+  --tag: #f0f0f0;
+  --accent: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-dim: #ea580c14;
+  --cta-link: #fffaf7;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --text-primary: #f0f0f0;
+  --text-secondary: #aaaaaa;
+  --text-muted: #666666;
+  --text-white: #ffffff;
+  --border: #2a2a2a;
+  --tag: #2a2a2a;
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+  --accent-dim: #f9731618;
+  --cta-link: #3d1602;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

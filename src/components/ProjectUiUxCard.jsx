@@ -1,45 +1,54 @@
 import React from "react";
-import "../styles/ProjectCard.css";
 
-const ProjectComponent = ({ project }) => {
+const ProjectUiUxCard = ({ project }) => {
   return (
-    <div className="project-card">
+    <div className="flex max-w-[500px] flex-col overflow-hidden rounded-2xl border border-border bg-bg-card transition-transform duration-300 hover:scale-[1.02]">
       {/* Thumbnail */}
-      <div className="project-banner">
-        <img src={project.img} className="project-image" alt={project.title} />
-      
+      <div className="group relative overflow-hidden">
+        <img src={project.img} className="block w-full" alt={project.title} />
+
         {/* CTA Buttons */}
-        <div className="project-actions overlay">
-          <a href={project.demo} className="btn link">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 bg-black/50 p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <a
+            href={project.demo}
+            className="flex h-[42px] w-full items-center justify-center rounded-btn border border-accent bg-[#f6590533] px-2 text-center font-semibold text-accent no-underline transition-colors duration-200 hover:bg-cta-link"
+          >
             Case Study →
           </a>
         </div>
       </div>
 
       {/* Project card body */}
-      <div className="project-card-body">
+      <div className="flex flex-col gap-2.5 px-3 pb-3 pt-2">
         {/* Project Date */}
-        <span className="project-date">{project.date}</span>
-        
+        <span className="text-sm font-medium text-text-secondary">
+          {project.date}
+        </span>
+
         {/* Card header */}
-        <div className="project-header">
-          <h2 className="project-title">{project.title}</h2>
-          <p className="project-subtitle">{project.desc}</p>
+        <div className="flex flex-col">
+          <h2 className="text-lg font-semibold leading-[1.5]">
+            {project.title}
+          </h2>
+          <p className="text-sm font-medium leading-[1.6] text-text-secondary">
+            {project.desc}
+          </p>
         </div>
 
         {/* Tags */}
-        <div className="project-tags">
+        <div className="mt-2 flex flex-wrap gap-2">
           {project.tags.map((tag, index) => (
-            <span key={index} className="project-tag">
+            <span
+              key={index}
+              className="rounded-[20px] bg-tag px-3 py-2 text-xs"
+            >
               {tag}
             </span>
           ))}
         </div>
-
-
       </div>
     </div>
   );
 };
 
-export default ProjectComponent;
+export default ProjectUiUxCard;

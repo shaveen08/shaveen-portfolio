@@ -18,7 +18,7 @@
       "CRUD"
     ],
     "img": "/assets/thumbnail/crm-system-thumbnail.jpg",
-    "link": "https://github.com/shaveen08/CRM-System-Client"
+    "demo": "https://github.com/shaveen08/CRM-System-Client"
   },
   {
     "id": 2,
@@ -38,7 +38,7 @@
       "CRUD"
     ],
     "img": "/assets/thumbnail/ams-thumbnail.jpg",
-    "link": "https://github.com/shaveen08/Appointment-Management"
+    "demo": "https://github.com/shaveen08/Appointment-Management"
   },
   {
     "id": 3,

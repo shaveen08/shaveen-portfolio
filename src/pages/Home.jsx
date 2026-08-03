@@ -275,7 +275,7 @@ const Home = () => {
           <img
             src={shaveenProfile}
             alt="Shaveen Kumar"
-            className="block w-full max-h-[260px] object-cover object-top md:w-[300px] md:max-h-none"
+            className="block w-full max-h-fit object-cover object-top md:w-[300px] md:max-h-none"
           />
         </div>
       </header>

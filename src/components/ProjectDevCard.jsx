@@ -1,8 +1,19 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const ProjectDevCard = ({ project }) => {
   return (
-    <div className="flex max-w-[500px] flex-col overflow-hidden rounded-2xl border border-border bg-bg-card transition-transform duration-300 hover:scale-[1.02]">
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 16 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.4, ease: "easeOut" },
+        },
+      }}
+      className="flex max-w-[500px] flex-col overflow-hidden rounded-2xl border border-border bg-bg-card transition-transform duration-300 hover:scale-[1.02]"
+    >
       {/* Thumbnail */}
       <div className="group relative overflow-hidden">
         <img src={project.img} className="block w-full" alt={project.title} />
@@ -49,7 +60,7 @@ const ProjectDevCard = ({ project }) => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

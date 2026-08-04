@@ -2,7 +2,7 @@ import ProjectUiUxCard from "../components/ProjectUiUxCard";
 import ProjectDevCard from "../components/ProjectDevCard";
 
 import uiuxProjects from "../data/uiuxProjects.json";
-import frontendProjects from "../data/frontendProjects.json";
+import mernProjects from "../data/mernProjects.json";
 import shaveenProfile from "../assets/img/MyPicture.png";
 import { HugeiconsIcon } from "@hugeicons/react";
 
@@ -30,6 +30,41 @@ import {
   Behance01Icon,
 } from "@hugeicons/core-free-icons";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+// ── Motion variants ─────────────────────────────────────────────────────────
+// Only opacity/transform are ever animated — both are GPU-composited and
+// never trigger layout or paint, so these stay cheap no matter how many
+// elements are on screen at once.
+
+// Parent container that staggers its direct motion children in.
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+};
+
+// Default child: fade + rise.
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+};
+
+// Child variant for timeline items: fade + slide from the left,
+// matching the existing hover:translate-x-1 direction.
+const fadeRight = {
+  hidden: { opacity: 0, x: -16 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+// Whole-section reveal (About / Skills / Contact headers).
+const sectionReveal = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+// A single viewport config reused everywhere — "once" means each element
+// computes its scroll-trigger a single time, never re-observes after.
+const revealOnce = { once: true, amount: 0.2 };
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
@@ -176,10 +211,10 @@ const Home = () => {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  // Back-to-top visibility
+  // Back-to-top visibility (passive listener — doesn't block the scroll thread)
   useEffect(() => {
     const onScroll = () => setBackTopVisible(window.scrollY > 400);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -208,19 +243,27 @@ const Home = () => {
   };
 
   return (
-    <div className="mx-auto flex max-w-[1280px] flex-col gap-14 px-6 py-8 md:gap-24 md:px-12 md:py-14 lg:px-[100px] lg:py-[72px]">
+    <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6 py-8 md:gap-24 md:px-12 md:py-14 lg:px-25 lg:py-18">
       {/* ── HERO ──────────────────────────────────────────────── */}
       <header
         id="home"
         className="relative flex flex-col items-stretch justify-between gap-8 overflow-hidden rounded-3xl border border-border bg-[linear-gradient(135deg,#ea5a0c12_0%,var(--bg)_45%)] transition-colors duration-300 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_55%_75%_at_5%_100%,#ea580c14,transparent_65%)] before:content-[''] md:flex-row"
       >
-        <div className="relative z-10 flex max-w-[720px] flex-col gap-6 px-6 py-7 md:px-14 md:py-12">
-          <div className="flex w-fit items-center gap-2 rounded-full bg-accent-dim px-3.5 py-1.5 text-[13px] font-semibold text-accent">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="relative z-10 flex max-w-180 flex-col gap-6 px-6 py-7 md:px-14 md:py-12"
+        >
+          <motion.div
+            variants={fadeUp}
+            className="flex w-fit items-center gap-2 rounded-full bg-accent-dim px-3.5 py-1.5 text-[13px] font-semibold text-accent"
+          >
             <span className="h-2 w-2 shrink-0 animate-pulse-dot rounded-full bg-accent" />
             Open to work
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-2.5">
+          <motion.div variants={fadeUp} className="flex flex-col gap-2.5">
             <h1 className="text-[32px] font-bold leading-[1.3] tracking-[-1px] text-text-primary lg:text-[40px]">
               Hi, I'm Shaveen —{" "}
               <span className="text-accent">UI/UX Designer</span>
@@ -232,10 +275,10 @@ const Home = () => {
               wireframes to working code. I bridge the gap between design and
               engineering.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Skill icons */}
-          <div className="flex flex-wrap gap-2.5">
+          {/* Skill icons — hover kept as native CSS, cheaper than JS-driven motion */}
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-2.5">
             {skillIcons.map(({ src, label }) => (
               <div
                 className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-bg-card transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-accent"
@@ -249,39 +292,53 @@ const Home = () => {
                 />
               </div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* CTA buttons */}
-          <div className="flex flex-wrap gap-3">
-            <button
-              className="flex h-[46px] items-center justify-center gap-2 rounded-btn bg-accent px-7 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-accent-hover hover:shadow-[0_6px_24px_#ea580c40] sm:justify-start"
+          {/* CTA buttons — whileTap only (cheap, transform-only) */}
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
+            <motion.button
+              whileTap={{ scale: 0.96 }}
+              className="flex h-11.5 items-center justify-center gap-2 rounded-btn bg-accent px-7 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-accent-hover hover:shadow-[0_6px_24px_#ea580c40] sm:justify-start"
               onClick={() => scrollTo("contact")}
             >
               Hire Me <HugeiconsIcon icon={Mailbox01Icon} size={18} />
-            </button>
-            <a
-              className="flex h-[46px] items-center justify-center gap-2 rounded-btn border-[1.5px] border-accent bg-transparent px-7 text-[15px] font-semibold text-accent transition-all duration-200 hover:-translate-y-px hover:bg-accent-dim sm:justify-start"
+            </motion.button>
+            <motion.a
+              whileTap={{ scale: 0.96 }}
+              className="flex h-11.5 items-center justify-center gap-2 rounded-btn border-[1.5px] border-accent bg-transparent px-7 text-[15px] font-semibold text-accent transition-all duration-200 hover:-translate-y-px hover:bg-accent-dim sm:justify-start"
               href="/resume/ShaveenKumar_MERN_Developer_Resume.pdf"
               download="ShaveenKumar_MERN_Developer_Resume.pdf"
               target="_blank"
             >
               Download CV <HugeiconsIcon icon={Download01Icon} size={18} />
-            </a>
-          </div>
-        </div>
+            </motion.a>
+          </motion.div>
+        </motion.div>
 
-        {/* Profile image */}
-        <div className="flex shrink-0 items-end justify-start">
+        {/* Profile image — simple one-shot fade/scale-in, no scroll trigger needed */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex shrink-0 items-end justify-start"
+        >
           <img
             src={shaveenProfile}
             alt="Shaveen Kumar"
-            className="block w-full max-h-fit object-cover object-top md:w-[300px] md:max-h-none"
+            className="block w-full max-h-fit object-cover object-top md:w-75 md:max-h-none"
           />
-        </div>
+        </motion.div>
       </header>
 
       {/* ── ABOUT ─────────────────────────────────────────────── */}
-      <section id="about" className="flex flex-col">
+      <motion.section
+        id="about"
+        initial="hidden"
+        whileInView="show"
+        viewport={revealOnce}
+        variants={sectionReveal}
+        className="flex flex-col"
+      >
         <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2">
           {/* Left — bio + stats */}
           <div>
@@ -305,9 +362,16 @@ const Home = () => {
               intersection of design thinking and engineering precision.
             </p>
 
-            <div className="mt-7 grid grid-cols-2 gap-3.5">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={revealOnce}
+              className="mt-7 grid grid-cols-2 gap-3.5"
+            >
               {stats.map(({ num, label }) => (
-                <div
+                <motion.div
+                  variants={fadeUp}
                   className="rounded-card border border-border bg-bg-card p-5 transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-accent"
                   key={label}
                 >
@@ -317,9 +381,9 @@ const Home = () => {
                   <div className="mt-1.5 text-[13px] text-text-secondary">
                     {label}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right — timeline */}
@@ -327,35 +391,49 @@ const Home = () => {
             <p className="mb-1.5 text-xs font-bold uppercase tracking-[2px] text-accent">
               Experience &amp; Education
             </p>
-            <div className="mt-4 flex flex-col gap-3.5">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={revealOnce}
+              className="mt-4 flex flex-col gap-3.5"
+            >
               {timelineItems.map(({ emoji, title, sub, date }) => (
-                <div
+                <motion.div
+                  variants={fadeRight}
                   className="flex gap-4 rounded-[14px] border border-border bg-bg-card p-4 transition-[border-color,transform] duration-200 hover:translate-x-1 hover:border-accent"
                   key={title}
                 >
-                  <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] bg-accent-dim text-lg">
+                  <div className="flex h-9.5 w-9.5 shrink-0 items-center justify-center rounded-[10px] bg-accent-dim text-lg">
                     {emoji}
                   </div>
                   <div>
                     <div className="text-sm font-semibold leading-[1.4] text-text-primary">
                       {title}
                     </div>
-                    <div className="mt-1 text-[13px] leading-[1.5] text-text-secondary">
+                    <div className="mt-1 text-[13px] leading-normal text-text-secondary">
                       {sub}
                     </div>
                     <div className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.5px] text-accent">
                       {date}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── PROJECTS ──────────────────────────────────────────── */}
-      <section id="projects" className="flex flex-col">
+      <motion.section
+        id="projects"
+        initial="hidden"
+        whileInView="show"
+        viewport={revealOnce}
+        variants={sectionReveal}
+        className="flex flex-col"
+      >
         <header className="mb-7 flex flex-col gap-2">
           <p className="text-xs font-bold uppercase tracking-[2px] text-accent">
             Work
@@ -363,7 +441,7 @@ const Home = () => {
           <h3 className="text-[28px] font-semibold leading-[1.2] text-text-primary">
             Projects &amp; Case Studies
           </h3>
-          <p className="text-base font-medium leading-[1.5] text-text-secondary">
+          <p className="text-base font-medium leading-normal text-text-secondary">
             Real-world projects showcasing my design process and frontend
             skills.
           </p>
@@ -393,38 +471,68 @@ const Home = () => {
           </div>
         </section>
 
-        {activeTab === "uiux" && (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {uiuxProjects.map((project) => (
-              <ProjectUiUxCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {activeTab === "uiux" && (
+            <motion.div
+              key="uiux"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {uiuxProjects.map((project) => (
+                <ProjectUiUxCard key={project.id} project={project} />
+              ))}
+            </motion.div>
+          )}
 
-        {activeTab === "mern" && (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {frontendProjects.map((project) => (
-              <ProjectDevCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
-      </section>
+          {activeTab === "mern" && (
+            <motion.div
+              key="mern"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {mernProjects.map((project) => (
+                <ProjectDevCard key={project.id} project={project} />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.section>
 
       {/* ── SKILLS ────────────────────────────────────────────── */}
-      <section id="skills" className="flex flex-col">
+      <motion.section
+        id="skills"
+        initial="hidden"
+        whileInView="show"
+        viewport={revealOnce}
+        variants={sectionReveal}
+        className="flex flex-col"
+      >
         <p className="mb-1.5 text-xs font-bold uppercase tracking-[2px] text-accent">
           Toolkit
         </p>
         <h3 className="text-[28px] font-semibold leading-[1.2] text-text-primary">
           Skills &amp; Technologies
         </h3>
-        <p className="mb-8 text-base font-medium leading-[1.5] text-text-secondary">
+        <p className="mb-8 text-base font-medium leading-normal text-text-secondary">
           A blend of design tools and frontend technologies I use to bring ideas
           to life.
         </p>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={revealOnce}
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+        >
           {skillBlocks.map(({ category, pills }) => (
-            <div
+            <motion.div
+              variants={fadeUp}
               className="rounded-card border border-border bg-bg-card p-5 transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-accent"
               key={category}
             >
@@ -441,14 +549,18 @@ const Home = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* ── CONTACT ───────────────────────────────────────────── */}
-      <section
+      <motion.section
         id="contact"
+        initial="hidden"
+        whileInView="show"
+        viewport={revealOnce}
+        variants={sectionReveal}
         className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1.2fr]"
       >
         {/* Left — header + quick links */}
@@ -460,15 +572,22 @@ const Home = () => {
             <h3 className="text-[28px] font-semibold leading-[1.2] text-text-primary">
               Get in Touch
             </h3>
-            <p className="text-base font-medium leading-[1.5] text-text-secondary">
+            <p className="text-base font-medium leading-normal text-text-secondary">
               Have a project in mind or want to collaborate? I'd love to hear
               from you.
             </p>
           </div>
 
-          <div className="flex flex-col gap-2.5">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealOnce}
+            className="flex flex-col gap-2.5"
+          >
             {contactItems.map(({ icon, title, info, href }) => (
-              <div
+              <motion.div
+                variants={fadeRight}
                 className="flex items-center justify-between gap-3 rounded-xl border border-border bg-bg-card px-3.5 py-3 transition-[border-color,transform] duration-200 hover:translate-x-1 hover:border-accent"
                 key={title}
                 onClick={() =>
@@ -504,9 +623,9 @@ const Home = () => {
                     />
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Right — form */}
@@ -584,38 +703,44 @@ const Home = () => {
                   placeholder="Tell me about your project or opportunity…"
                   value={formData.message}
                   onChange={handleFormChange}
-                  className="h-[100px] w-full resize-none rounded-[10px] border border-border bg-bg-card px-3.5 py-2.5 text-sm text-text-primary outline-none transition-[border-color,box-shadow,background] duration-200 placeholder:text-text-muted focus:border-accent focus:shadow-[0_0_0_3px_#ea580c18]"
+                  className="h-25 w-full resize-none rounded-[10px] border border-border bg-bg-card px-3.5 py-2.5 text-sm text-text-primary outline-none transition-[border-color,box-shadow,background] duration-200 placeholder:text-text-muted focus:border-accent focus:shadow-[0_0_0_3px_#ea580c18]"
                 />
               </div>
               <div>
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="mt-2 h-[46px] w-full rounded-btn bg-accent text-[15px] font-bold text-white transition-all duration-200 hover:-translate-y-px hover:bg-accent-hover hover:shadow-[0_6px_24px_#ea580c40]"
+                  className="mt-2 h-11.5 w-full rounded-btn bg-accent text-[15px] font-bold text-white transition-all duration-200 hover:-translate-y-px hover:bg-accent-hover hover:shadow-[0_6px_24px_#ea580c40]"
                 >
                   Send Message →
-                </button>
+                </motion.button>
               </div>
             </form>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── BACK TO TOP ───────────────────────────────────────── */}
-      <button
-        className={`fixed bottom-7 right-7 z-[99] flex h-11 w-11 items-center justify-center rounded-full border-none bg-accent text-lg text-white shadow-[0_4px_20px_#ea580c50] transition-[opacity,transform] duration-200 hover:-translate-y-1 hover:bg-accent-hover ${
-          backTopVisible
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-2 opacity-0"
-        }`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
+      <AnimatePresence>
+        {backTopVisible && (
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            whileTap={{ scale: 0.9 }}
+            className="fixed bottom-7 right-7 z-99 flex h-11 w-11 items-center justify-center rounded-full border-none bg-accent text-lg text-white shadow-[0_4px_20px_#ea580c50] transition-colors duration-200 hover:bg-accent-hover"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Back to top"
+          >
+            ↑
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* ── THEME TOGGLE ──────────────────────────────────────── */}
       <button
-        className="fixed bottom-7 left-7 z-[99] flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg-card text-xl shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(0,0,0,0.18)]"
+        className="fixed bottom-7 left-7 z-99 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg-card text-xl shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(0,0,0,0.18)]"
         onClick={() => setDarkMode((d) => !d)}
         aria-label="Toggle theme"
         title={darkMode ? "Switch to light mode" : "Switch to dark mode"}

@@ -1,6 +1,14 @@
+import { motion } from "framer-motion"
+
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-between gap-3 border-t border-border px-6 py-6 text-center md:flex-row md:gap-4 md:px-[100px] md:py-7 md:text-left">
+    <motion.footer
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="flex flex-col items-center justify-between gap-3 border-t border-border px-6 py-6 text-center md:flex-row md:gap-4 md:px-[100px] md:py-7 md:text-left"
+    >
       <div className="text-base font-bold text-text-primary">
         Shaveen<span className="text-accent">.</span>
       </div>
@@ -36,7 +44,7 @@ const Footer = () => {
           in
         </a>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

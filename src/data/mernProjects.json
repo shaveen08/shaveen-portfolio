@@ -3,7 +3,7 @@
     "id": 1,
     "title": "CRM System",
     "desc": "A full-stack Customer Relationship Management (CRM) system with authentication, role-based access control, lead management, dashboards, and REST APIs.",
-    "date": "July 2026 - Agust 2026",
+    "date": "April 2026 - June 2026",
     "tags": [
       "React.js",
       "Redux Toolkit",
@@ -24,7 +24,7 @@
     "id": 2,
     "title": "Appointment Management System",
     "desc": "A full-stack appointment booking and management system featuring authentication, appointment scheduling, dashboards, and CRUD operations.",
-    "date": "June 2026",
+    "date": "July 2026",
     "tags": [
       "React.js",
       "Redux Toolkit",

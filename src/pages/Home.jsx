@@ -31,6 +31,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 // ── Motion variants ─────────────────────────────────────────────────────────
 // Only opacity/transform are ever animated — both are GPU-composited and
@@ -244,6 +245,14 @@ const Home = () => {
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-14 px-6 py-8 md:gap-24 md:px-12 md:py-14 lg:px-25 lg:py-18">
+      <Helmet>
+        <title>Shaveen Kumar | MERN Stack Developer</title>
+
+        <meta
+          name="description"
+          content="Portfolio showcasing React, Node.js, Express.js and MongoDB projects."
+        />
+      </Helmet>
       {/* ── HERO ──────────────────────────────────────────────── */}
       <header
         id="home"

@@ -1,11 +1,16 @@
+// Home.jsx
+
+// Components
 import ProjectUiUxCard from "../components/ProjectUiUxCard";
 import ProjectDevCard from "../components/ProjectDevCard";
 
+// JSON Data
 import uiuxProjects from "../data/uiuxProjects.json";
 import mernProjects from "../data/mernProjects.json";
-import shaveenProfile from "../assets/img/MyPicture.png";
+import shaveenProfile from "../assets/img/MyPicture.webp";
 import { HugeiconsIcon } from "@hugeicons/react";
 
+// Icons
 import htmlIcon from "../assets/icons/html-icon.svg";
 import cssIcon from "../assets/icons/css-icon.svg";
 import javaScriptIcon from "../assets/icons/javascipt-icon.svg";
@@ -17,6 +22,7 @@ import figmaIcon from "../assets/icons/figma-icon.svg";
 import photoshopIcon from "../assets/icons/photoshop-icon.svg";
 import illustratorIcon from "../assets/icons/illustrator-icon.svg";
 
+// Icons - Imported from HugeIcons
 import {
   Mailbox01Icon,
   Download01Icon,
@@ -139,7 +145,7 @@ const timelineItems = [
     emoji: "📚",
     title: "MERN Stack Certification — FITA Academy",
     sub: "Hands-on training in MongoDB, Express, React, and Node.js.",
-    date: "In Progress",
+    date: "Feb 2026 - June 2026",
   },
 ];
 
@@ -149,19 +155,38 @@ const skillBlocks = [
     pills: [
       "HTML5",
       "CSS3",
+      "Tailwind CSS",
       "JavaScript (ES6+)",
       "React",
-      "REST APIs",
+      "Redux",
       "Fetch API",
+      "Responsive Design",
+      "Component-Based Architecture",
     ],
   },
   {
     category: "Backend",
-    pills: ["Node.js", "Express.js", "MongoDB", "Mongoose"],
+    pills: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "RESTful APIs",
+      "JWT Authentication",
+      "Role-Based Access Control (RBAC)",
+      "CRUD Operations",
+    ],
   },
   {
     category: "Design",
-    pills: ["Figma", "Photoshop", "Illustrator", "Wireframing", "Prototyping"],
+    pills: [
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "Design System",
+      "Photoshop",
+      "Illustrator",
+    ],
   },
   {
     category: "UX Practice",
@@ -268,21 +293,22 @@ const Home = () => {
             variants={fadeUp}
             className="flex w-fit items-center gap-2 rounded-full bg-accent-dim px-3.5 py-1.5 text-[13px] font-semibold text-accent"
           >
-            <span className="h-2 w-2 shrink-0 animate-pulse-dot rounded-full bg-accent" />
+            <span className="h-2 w-2 shrink-0 animate-pulse-dot rounded-full bg-green-400" />
             Open to work
           </motion.div>
 
           <motion.div variants={fadeUp} className="flex flex-col gap-2.5">
             <h1 className="text-[32px] font-bold leading-[1.3] tracking-[-1px] text-text-primary lg:text-[40px]">
               Hi, I'm Shaveen —{" "}
-              <span className="text-accent">UI/UX Designer</span>
-              {" & "}
               <span className="text-accent">MERN Stack Dev</span>
+              {" & "}
+              <span className="text-accent">UI/UX Designer</span>
             </h1>
             <p className="text-base text-text-secondary">
-              1+ year crafting user-centred web &amp; mobile interfaces — from
-              wireframes to working code. I bridge the gap between design and
-              engineering.
+              MERN Stack Developer with 1.2 years of professional UI/UX
+              experience. I build scalable full-stack web applications using
+              React.js, Node.js, Express.js, and MongoDB while creating
+              intuitive, user-centered experiences.
             </p>
           </motion.div>
 
